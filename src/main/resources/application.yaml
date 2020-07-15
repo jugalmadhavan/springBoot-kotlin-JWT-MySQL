@@ -1,0 +1,62 @@
+logging:
+  level:
+    root: info
+
+spring:
+  jpa:
+    hibernate:
+      ddl-auto: create
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+        implicit-strategy: org.hibernate.boot.model.naming.ImplicitNamingStrategyLegacyJpaImpl
+    database-platform: org.hibernate.dialect.MySQL57Dialect
+    open-in-view: true
+    properties:
+      hibernate.show_sql: false
+      hibernate.dialect.storage_engine: innodb
+  datasource:
+    username: jugal
+    password: 4Hp2cVeMX3yUFZc6g3XX
+    url: jdbc:mysql://127.0.0.1:3300/books?useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC&characterEncoding=UTF-8
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    initialization-mode: always
+    continue-on-error: true
+    hikari:
+      data-source-properties:
+        cachePrepStmts: true
+        useServerPrepStmts: true
+        prepStmtCacheSize: 250
+        prepStmtCacheSqlLimit: 2048
+        useLocalSessionState: true
+        useLocalTransactionState: true
+        rewriteBatchedStatements: true
+        cacheResultSetMetadata: true
+        cacheServerConfiguration: true
+        elideSetAutoCommits: true
+        maintainTimeStats: false
+      pool-name: development
+      maximum-pool-size: 30
+      minimum-idle: 3
+      max-lifetime: 300000
+      idle-timeout: 250000
+management:
+  endpoint:
+    health:
+      show-details: WHEN_AUTHORIZED
+server:
+  port: 8443
+  ssl:
+    enabled: ${ENABLE_SSL:false}
+    key-store: classpath:keystore.p12
+    key-store-type: PKCS12
+    key-store-password: password
+    key-alias: keystore
+  compression:
+    enabled: false
+  http2:
+    enabled: true
+  servlet:
+    context-path: /
+  tomcat:
+    accesslog:
+      directory: logs
