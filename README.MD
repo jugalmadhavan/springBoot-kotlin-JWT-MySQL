@@ -25,15 +25,15 @@ mvn spring-boot:run
 
 ### Test
 ```console
-curl -i -H "Content-Type: application/json" -X POST -d '{ "username": "user", "password": "user"}' http://localhost:8443/v0/login
+curl -i -H "Content-Type: application/json" -X POST -d '{ "username": "user", "password": "user"}' http://localhost:8443/login
 ```
 
 ```console
-curl  -H "Authorization: ******"  http://localhost:8443/v0/api/verify
+curl  -H "Authorization: ******"  http://localhost:8443/api/verify
 ```
 
 ```console
-curl -H "Authorization: Bearer ******" http://localhost:8443/v0/actuator/health
+curl -H "Authorization: Bearer ******" http://localhost:8443/actuator/health
 ```
 
 ### Changelog
